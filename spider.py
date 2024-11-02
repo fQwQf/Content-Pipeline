@@ -31,16 +31,10 @@ class Spider:
             # 为微信公众号
             soup = BeautifulSoup(html, 'html.parser')
 
-            # 提取标题
-            title = soup.title.string
-            print('网页标题:', title)
-
             # 提取所有段落
             paragraphs = soup.find_all('p')
             for p in paragraphs:
-                self.article['content'] += p.text + '\n'
-            # 将文章信息保存为json文件  
-            #self.save()
+                self.article += p.text + '\n'
 
         except Exception as e:
             print('爬取文章失败：', e)
